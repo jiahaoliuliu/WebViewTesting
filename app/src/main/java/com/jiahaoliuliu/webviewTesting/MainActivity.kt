@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         webView = findViewById(R.id.webview)
         initializeWebViewData()
-        webView.loadUrl("https://www.google.com")
+        webView.loadUrl("https://mobile1.emirates.com/ui/us/english/index.xhtml#/search/fromhome")
     }
 
     private fun initializeWebViewData() {
@@ -43,7 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPageFinished(view: WebView?, url: String?) {
             super.onPageFinished(view, url)
+            loadJs(webView)
         }
     }
 
+    private fun loadJs(webView: WebView) {
+        webView.evaluateJavascript("document.getElementById('departureId').click();", null)
+    }
 }
